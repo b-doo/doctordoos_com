@@ -1,0 +1,39 @@
+body {
+  background-color: rgba(131, 116, 103, 0.3);
+}
+.container.main {
+  padding: 0px;
+  box-shadow: 12px 0 90px -4px rgba(0,0,0, 0.6), -12px 0 90px -4px rgba(0,0,0, 0.6);
+}
+
+.container.nav {
+  padding-bottom: 25px;
+  background-image: radial-gradient(farthest-corner at 850px 450px , #FFFFFF 0%, #837467 100%);
+}
+.container.content {
+  border-left: 1px solid rgba(131, 116, 102, 1);
+  border-right: 1px solid rgba(131, 116, 102, 1);
+}
+.button {
+  color: #fff;font-size: 2.6em;text-shadow: 1px 1px 1px black;
+}
+.buybutton {
+  min-width: 8em;background-color: #ee511c;border-color: #ee511c;font-size: 1.4em;
+}
+.separator {
+  max-height: 13px;
+  min-height: 13px;
+  background-image: url('../images/separator-hr.png');background-repeat: repeat-x";
+}
+.lightbg {
+  background-color: #dfcfc0;min-height: 200px;
+}
+.darkbg {
+  background-color: #837467;min-height: 200px;
+}
+.min-height-width {
+  max-height: 13px;min-height: 13px;
+}
+.star {
+  position: relative; top: 50%; transform: translateY(40%);
+}
