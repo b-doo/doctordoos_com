@@ -1,163 +1,175 @@
-<!doctype html>
-<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
-{% load pages_tags mezzanine_tags i18n staticfiles %}
+<!doctype_html>
+<html lang="{{ LANGUAGE_CODE }}">
+  {% load pages_tags mezzanine_tags i18n staticfiles %}
+  <head>
+    <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/png" href="{% static "images/favicon.ico" %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-3.0.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    {% compress css %}
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+      <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" href="{% static "css/styles.css" %}">
+    {% endcompress %}
+  </head>
+    <body>
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container" id="main-nav-container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation-content" aria-expanded="false">
+              <span class="sr-only">Toggle Navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="{% static "images/CBD-banner.png" %}" id="img-cbd-banner" /></a>
+          </div>
+          <div class="collapse navbar-collapse" id="navigation-content">
+            <div class="clearfix">
+              <div class="pull-right" id="nav-wrapper">
+                <ul class="nav navbar-nav">
+                  <li><a href="#">Buy Now</a></li>
+                  <li class="hidden-xs"><img src="{% static "images/separator-star.png" %}" class="center-block img-responsive star" /></li>
+                  <li><a href="#">About</a></li>
+                  <li class="hidden-xs"><img src="{% static "images/separator-star.png" %}" class="center-block img-responsive star" /></li>
+                  <li><a href="#">Contact Us</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="container" id="pup-cakes-banner">
+        <div class="row">
+          <div class="col-xs-6">
+            <img src="{% static "images/pup-cakes.png" %}" class="img img-responsive center-block" />
+          </div>
+          <div class="col-xs-6">
+              <img src="{% static "images/doo-head.png" %}" class="img img-responsive center-block" />
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row min-height-width">
+          <div class="col-xs-12 separator">
 
-<head>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
-<meta name="description" content="{% block meta_description %}{% endblock %}">
-<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
-<link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
-
-{% ifinstalled mezzanine.blog %}
-<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
-<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
-{% endifinstalled %}
-
-{% compress css %}
-<link rel="stylesheet" href="{% static "bootstrap-3.3.7-dist/css/bootstrap.css" %}">
-<link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
-<!--<link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">-->
-{% if LANGUAGE_BIDI %}
-<link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}">
-{% endif %}
-{% ifinstalled cartridge.shop %}
-<link rel="stylesheet" href="{% static "css/cartridge.css" %}">
-{% if LANGUAGE_BIDI %}
-<link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
-{% endif %}
-{% endifinstalled %}
-{% block extra_css %}{% endblock %}
-{% endcompress %}
-
-{% compress js %}
-<script src="{% static "jquery-3.1.1-dist/jquery-3.1.1.js" %}"></script>
-<script src="{% static "jquery-3.1.1-dist/jquery-migrate-3.0.0.js" %}"></script>
-<script src="{% static "bootstrap-3.3.7-dist/js/bootstrap.js" %}"></script>
-<script src="{% static "js/bootstrap-extras.js" %}"></script>
-{% block extra_js %}{% endblock %}
-{% endcompress %}
-
-<!--[if lt IE 9]>
-<script src="{% static "js/html5shiv.js" %}"></script>
-<script src="{% static "js/respond.min.js" %}"></script>
-<![endif]-->
-
-{% block extra_head %}{% endblock %}
-</head>
-
-<body id="{% block body_id %}body{% endblock %}">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-2">
-				<img src="{% static "images/CBD-banner.png" %}" />
-			</div>
-		</div>
-	</div>
-
-<!-- <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-<div class="container">
-<div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">{% trans "Toggle Navigation" %}</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
-    {% block navbar_title %}
-    {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
-    {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
-    {% endblock%}
-</div>
-<div class="navbar-collapse collapse">
-    {% block navbar_search_form %}{% search_form "all" %}{% endblock %}
-    {% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}
-</div>
-</div>
-</div>
-
-<div class="container">
-
-{% nevercache %}
-{% if messages %}
-<div class="messages">
-{% for message in messages %}
-<div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    {{ message }}
-</div>
-{% endfor %}
-</div>
-{% endif %}
-{% endnevercache %}
-
-<h1>{% block title %}{% endblock %}</h1>
-
-<ul class="breadcrumb">
-{% spaceless %}
-{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
-{% endspaceless %}
-</ul>
-
-</div>
-
-<div class="container">
-<div class="row">
-
-<div class="col-md-2 left">
-    {% block left_panel %}
-    <div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div>
-    {% endblock %}
-</div>
-
-<div class="col-md-7 middle">
-    {% block main %}{% endblock %}
-</div>
-
-<div class="col-md-3 right">
-    {% nevercache %}
-    {% include "includes/language_selector.html" %}
-    {% include "includes/user_panel.html" %}
-    {% endnevercache %}
-    <div class="panel panel-default">
-    <div class="panel-body">
-    {% block right_panel %}
-    {% ifinstalled mezzanine.twitter %}
-    {% include "twitter/tweets.html" %}
-    {% endifinstalled %}
-    {% endblock %}
-    </div>
-    </div>
-</div>
-
-</div>
-</div>
-
-<footer>
-<div class="container">
-{% page_menu "pages/menus/footer.html" %}
-
-<div class="row">
-<p class="site-info text-center">
-    {% trans "Powered by" %}
-    <a href="http://mezzanine.jupo.org">Mezzanine</a>{% ifinstalled cartridge.shop %},
-    <a href="http://cartridge.jupo.org">Cartridge</a>{% endifinstalled %}
-    {% trans "and" %}
-    <a href="http://www.djangoproject.com">Django</a>
-    <span class="separator">|</span>
-    {% trans "Theme by" %} <a target="_blank" href="http://getbootstrap.com">Bootstrap</a>
-    {% ifinstalled mezzanine.mobile %}
-    <span class="separator">|</span>
-    <a href="{% url "set_device" "mobile" %}?next={{ request.path }}">{% trans "View Mobile Site" %}</a>
-    {% endifinstalled %}
-</p>
-</div>
-</div>
-</footer>
--->
-{% block footer_js %}
-{% include "includes/footer_scripts.html" %}
-{% endblock %}
-</body>
+          </div>
+        </div>
+      </div>
+      <div class="container lightbg">
+        <div class="row">
+          <div class="col-md-12">
+            hello
+          </div>
+        </div>
+      </div>
+        <!--<div class="container nav content">
+          <div class="row">
+            <div class="col-md-3 col-xs-3">
+              <img src="{% static "images/CBD-banner.png" %}" id="img-cbd-banner" class="img-responsive" />
+            </div>
+            <div class="col-md-9 col-xs-8 col-xs-offset-1">
+              <div class="well" style="background-color: #837467;border: none">
+                <div class="row">
+                  <div class="col-md-3 col-xs-3 text-center button" >Buy Now</div>
+                  <div class="col-md-1 col-xs-1 text-center">
+                    <img src="{% static "images/separator-star.png" %}" class="center-block img-responsive star">
+                  </div>
+                  <div class="col-md-3 col-xs-3 text-center button">About</div>
+                  <div class="col-md-1 col-xs-1">
+                    <img src="{% static "images/separator-star.png" %}" class="center-block img-responsive star">
+                  </div>
+                  <div class="col-md-3 col-xs-3 text-center button">Contact Us</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <img src="{% static "images/pup-cakes.png" %}" class="img-responsive" style="padding-top: 50px;padding-left: 5.5em;top: -2em; position: relative" />
+            </div>
+            <div class="col-md-6">
+              <img src="{% static "images/doo-head.png" %}" class="img-responsive pull-right" style="padding-right: 2em;top: -2.7em;position: relative" />
+            </div>
+          </div>
+      </div>
+      <div class="container content">
+        <div class="row min-height-width">
+          <div class="col-md-12 separator">
+          </div>
+        </div>
+        <div class="row" style="min-height: 200px;">
+          <div class="col-md-3">
+              <img src="{% static "images/packaging.png" %}" class="img-responsive block-center" style="padding-top: 2em; padding-bottom: 2em;margin: 0 auto" />
+          </div>
+          <div class="col-md-9">
+            <h1 class="text-center">Peanut Butter and Pumpkin - 16oz</h1>
+            <div class="well" style="font-size: 1.2em">This is the product description. This is the product description. This is the product description. This is the product description. This is the product description. This is the product description. This is the product description. This is the product description. This is the product description. </div>
+            <div class="form-group">
+              <label class="col-md-2 form-label" for="purchase-quantity" style="font-size: 1.4em">Quantity</label>
+              <div class="col-md-2">
+                <input type="number" class="form-control" id="purchase-quantity" value="1" min="1" step="1" style="font-size: 1.4em" />
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-warning buybutton">BUY</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container content">
+        <div class="row min-height-width">
+          <div class="col-md-12 separator"></div>
+        </div>
+        <div class="row lightbg">
+          <div class="col-md-9">
+            <h1 class="text-center">About Dr Doo's Pup Cakes</h1>
+            <div class="well" style="font-size: 1.2em">
+              This is about the pup cakes. This is about the pup cakes. This is about the pup cakes. This is about the pup cakes. This is about the pup cakes. This is about the pup cakes. This is about the pup cakes. This is about the pup cakes. This is about the pup cakes. This is about the pup cakes. This is about the pup cakes. This is about the pup cakes. This is about the pup cakes.
+            </div>
+          </div>
+          <div class="col-md-3">
+            cool picture bro!
+          </div>
+        </div>
+      </div>
+      <div class="container content">
+        <div class="row min-height-width">
+          <div class="col-md-12 separator"></div>
+        </div>
+        <div class="row" style="min-height: 200px;">
+          <div class="col-md-12">
+            <h1 class="text-center">Contact Us</h1>
+            <p>This is the contact paragraph. This is the contact paragraph. This is the contact paragraph. This is the contact paragraph. This is the contact paragraph. This is the contact paragraph. This is the contact paragraph. This is the contact paragraph. This is the contact paragraph. </p>
+            <textarea class="form-control"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="container content">
+        <div class="row min-height-width">
+          <div class="col-md-12 separator"></div>
+        </div>
+        <div class="row darkbg">
+          <div class="col-md-4">
+            <div class="center-block" style="width: 14em;font-size: 2em;color: #fff;padding-top: 2em;padding-left: 1em">
+              PO Box 123<br />
+              Detroit, MI 12345
+            </div>
+          </div>
+          <div class="col-md-4">
+            <img src="{% static "images/dr-doos-footer-logo.png" %}" class="center-block img-responsive" style="padding-top:1em;" />
+          </div>
+          <div class="col-md-4">
+            <div class="center-block" style="width: 14em;font-size:2em;color:#fff;padding-top:2em;text-align:right;padding-right: 2em;">
+              <span class="fa fa-phone" aria-hidden="true"></span>&nbsp;313-555-1212<br />
+              <span class="fa fa-envelope" aria-hidden="true"></span>&nbsp;info@doctordoos.com
+            </div>
+          </div>
+        </div>
+      </div>-->
+  </body>
 </html>
