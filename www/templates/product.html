@@ -1,0 +1,51 @@
+{% load pages_tags mezzanine_tags i18n static %}
+{% if products %}
+{% for product in products %}
+<div class="col-md-3">
+
+  {% if product.images %}
+    <ul id="product-images-large" class="list-unstyled list-inline">
+        {% for image in product.images.all %}
+        <li id="image-{{ image.id }}-large"{% if not forloop.first %}style="display:none;"{% endif %}>
+            <a class="product-image-large" href="{% static "media/" %}{{ image.file }}">
+                <img alt="{{ image.description }}" src="{% static "media/" %}{{image.file}}" class="img-thumbnail img-responsive col-xs-12">
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    {% if images|length != 1 %}
+    <ul id="product-images-thumb" class="list-unstyled list-inline">
+        {% for image in images %}
+        <li>
+            <a class="thumbnail" id="image-{{ image.id }}" href="{{ MEDIA_URL }}{{ image.file }}">
+                <img alt="{{ image.description }}" src="{{ MEDIA_URL }}{% thumbnail image.file 75 75 %}">
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endif %}
+</div>
+<div class="col-md-9">
+     <h1 class="text-center">{{ product.title }}</h1>
+     <div class="well" style="font-size: 1.2em">{{ product.description}}</div>
+     <div class="form-group">
+       <label class="col-md-2 form-label" for="purchase-quantity" style="font-size: 1.4em">Quantity</label>
+       <!-- <div class="col-md-2">
+         <input type="number" class="form-control" id="purchase-quantity" value="1" min="1" step="1" style="font-size: 1.4em" />
+        </div> -->
+        <div class="col-md-2">
+            <form method="post" id="add-cart" class="shop-form">
+                {% fields_for add_product_form %}
+                <div class="form-actions">
+                    <input type="submit" class="btn btn-primary btn-lg pull-right" name="add_cart" value="{% trans "Buy" %}">
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+{% endfor %}
+{% else %}
+<meta http-equiv="REFRESH" content="0;url={{redirect}}">
+{% endif %}
