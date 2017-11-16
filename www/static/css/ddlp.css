@@ -1,8 +1,8 @@
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   img#img-cbd-banner {
-    max-height: 95px;
+    height: 95px;
   }
-  
+
   div.button {
     font-size: 1.4em;
   }
@@ -18,17 +18,27 @@
 
   div#nav-wrapper {
     text-align: right;
+    width: 100%;
   }
 
   div#pup-cakes-banner {
     padding-top: 95px;
     background-image: radial-gradient(farthest-corner at 550px 250px , #FFFFFF 0%, #837467 100%);
-    padding-bottom: 40px;
+    padding-bottom: 20px;
+  }
+
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+    color: rgb(217, 213, 209);
+    text-align: right;
   }
 
 }
 
 @media (min-width: 768px) {
+  img#img-cbd-banner {
+    height: 173px;
+  }
+
   div#nav-wrapper {
     background-color: rgba(131, 116, 103, 1);
     /*border-bottom-left-radius: 4px;
@@ -58,9 +68,27 @@
   }
 }
 
+ul.dropdown-menu {
+  border: unset;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.open>a {
+  color: rgba(131, 116, 103, 1) !important;
+}
+
 /*div#main-nav-container {
   background-color: rgba(131, 116, 103, 1);
 }*/
+
+img#img-cbd-banner {
+    transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+}
+
+img#img-cbd-banner.banner-small {
+  height: 65px;
+}
 
 #nav-wrapper > ul > li > a {
   color: #d9d5d1;
@@ -91,6 +119,7 @@ div#pup-cakes-banner {
 
 body {
   background-color: rgba(131, 116, 103, 0.3);
+  position: relative;
 }
 /*.container.main {
   padding: 0px;
@@ -117,11 +146,26 @@ body {
   background-image: url('../images/separator-hr.png');background-repeat: repeat-x";
 }
 .lightbg {
-  background-color: #dfcfc0;min-height: 200px;
+  background-color: #dfcfc0;
+  min-height: 200px;
 }
 .darkbg {
-  background-color: #837467;min-height: 200px;
+  background-color: #837467;
+  min-height: 200px;
 }
+
+.nobg {
+  background-color: unset;
+  min-height: 200px;
+}
+
+div.container.container-wrapper {
+  padding-left: 0px;
+  padding-right: 0px;
+  overflow-x: hidden;
+  box-shadow: 0px 0px 20px 2px black;
+}
+
 .min-height-width {
   max-height: 13px;min-height: 13px;
 }
@@ -130,4 +174,8 @@ body {
   top: 50%;
   transform: translateY(40%);
   max-height: 25px;
+}
+
+img#doo-head {
+  max-height: 391px;
 }

@@ -196,6 +196,7 @@ DEBUG = False
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 SITE_ID = 1
+SITE_TITLE = "Doctor Doo's Little PupCakery"
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -303,7 +304,6 @@ if DJANGO_VERSION < (1, 9):
 
 INSTALLED_APPS = (
     "www",
-    "debug_toolbar",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
