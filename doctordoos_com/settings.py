@@ -17,7 +17,7 @@ from django.utils.translation import ugettext_lazy as _
 # http://cartridge.jupo.org/configuration.html#default-settings
 
 # Sequence of available credit card types for payment.
-# SHOP_CARD_TYPES = ("Mastercard", "Visa", "Diners", "Amex")
+SHOP_CARD_TYPES = ("Mastercard", "Visa", "Discover", "Amex")
 
 # Setting to turn on featured images for shop categories. Defaults to False.
 # SHOP_CATEGORY_USE_FEATURED_IMAGE = True

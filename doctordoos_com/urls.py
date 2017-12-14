@@ -7,8 +7,12 @@ from django.views.i18n import set_language
 from mezzanine.core.views import direct_to_template
 from mezzanine.conf import settings
 
-from cartridge.shop.views import order_history
+from cartridge.shop.views import order_history, checkout_steps
 
+from www.views import HomeView
+from www.forms import DDLPOrderForm
+
+_slash = '/' if settings.APPEND_SLASH else ''
 
 admin.autodiscover()
 
@@ -30,6 +34,8 @@ if settings.USE_MODELTRANSLATION:
 urlpatterns += [
 
     # Cartridge URLs.
+    url(f'^shop/checkout{_slash}', checkout_steps, {'form_class': DDLPOrderForm}, name='shop_checkout'),
+    url('^shop/$', HomeView.as_view(), name='home'),
     url("^shop/", include("cartridge.shop.urls")),
     url("^account/orders/$", order_history, name="shop_order_history"),
 
@@ -45,7 +51,8 @@ urlpatterns += [
 
     # url("^$", direct_to_template, {"template": "index.html"}, name="home"),
 
-    url("^$", direct_to_template, {"template": "base.html"}, name="home"),
+    #url("^$", direct_to_template, {"template": "base.html"}, name="home"),
+    url('^$', HomeView.as_view(), name='home'),
 
     # HOMEPAGE AS AN EDITABLE PAGE IN THE PAGE TREE
     # ---------------------------------------------

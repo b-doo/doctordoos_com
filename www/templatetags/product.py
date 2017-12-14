@@ -1,13 +1,13 @@
 from django import template
 from cartridge.shop.models import Product
-from cartridge.shop.forms import AddProductForm
 from cartridge.shop.utils import recalculate_cart
+from www.forms import DDLPAddProductForm
 
 register = template.Library()
 
 
 @register.inclusion_tag('product.html', takes_context=True)
-def product(context, form_class=AddProductForm, to_cart=True):
+def product(context, form_class=DDLPAddProductForm, to_cart=True):
     products = Product.objects.published()
     product_single = products[0]
     request = context.request
@@ -23,3 +23,5 @@ def product(context, form_class=AddProductForm, to_cart=True):
                 recalculate_cart(request)
                 return {"redirect": "shop/checkout/"}
     return {"products": products, "add_product_form": add_product_form}
+
+

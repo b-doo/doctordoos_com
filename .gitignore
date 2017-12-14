@@ -7,3 +7,7 @@ local_settings.py
 /static
 .vscode
 .vscode/*
+
+www/static/images/\.directory
+
+www/migrations/*

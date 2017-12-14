@@ -5,7 +5,7 @@
 <head>
   <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
   <meta charset="utf-8">
-  <link rel="shortcut icon" type="image/png" href="{% static " images/favicon.ico " %}" />
+  <link rel="shortcut icon" type="image/png" href="{% static "images/favicon.ico" %}" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   {% compress js %}
   <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -40,36 +40,30 @@
         <div class="collapse navbar-collapse" id="navigation-content">
           <div class="clearfix">
             <div class="pull-right" id="nav-wrapper">
+              <!-- TODO: put this into an include -->
               <ul class="nav navbar-nav" role="tablist">
                 <li>
-                  <a href="#buy-now">Buy Now</a>
-                </li>
-                <li class="hidden-xs hidden-sm">
-                  <img src="{% static "images/separator-star.png" %}" class="center-block img-responsive star" />
-                </li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About</a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a href="#pupcakes">Our Pup Cakes</a>
-                    </li>
-                    <li>
-                      <a href="#ddlp">Dr. Doo's Little PupCakery</a>
-                    </li>
-                  </ul>
+                  <a href="{% if request.path != '/' %}/{% endif %}#buy-now">Buy Now</a>
                 </li>
                 <li class="hidden-xs hidden-sm">
                   <img src="{% static "images/separator-star.png" %}" class="center-block img-responsive star" />
                 </li>
                 <li>
-                  <a href="#faq">FAQs</a>
+                  <a href="{% if request.path != '/' %}/{% endif %}#about">About</a>
                 </li>
                 <li class="hidden-xs hidden-sm">
                   <img src="{% static "images/separator-star.png" %}" class="center-block img-responsive star" />
                 </li>
                 <li>
-                  <a href="#contact">Contact Us</a>
+                  <a href="{% if request.path != '/' %}/{% endif %}#faq">FAQs</a>
                 </li>
+                <li class="hidden-xs hidden-sm">
+                  <img src="{% static "images/separator-star.png" %}" class="center-block img-responsive star" />
+                </li>
+                <li>
+                  <a href="{% if request.path != '/' %}/{% endif %}#contact">Contact Us</a>
+                </li>
+                <!-- include -->
               </ul>
             </div>
           </div>
@@ -86,6 +80,7 @@
         </div>
       </div>
     </div>
+    {% block product %}
     <div class="container">
       <div class="row min-height-width">
         <div class="col-xs-12 separator">
@@ -93,104 +88,22 @@
         </div>
       </div>
     </div>
-    <div class="container nobg" id="buy-now">
+    <div class="container nobg ddlp-content" id="buy-now">
       <div class="row">
         <div class="col-md-12">
-          <h3>BUY SECTION</h3>
           <div>
-            {%block main %} {% product %} {% endblock main %}
+            {% block main %}{% product %}{% endblock main %}
           </div>
         </div>
       </div>
     </div>
-    <div class="container">
-      <div class="row min-height-width">
-        <div class="col-xs-12 separator">
-
-        </div>
-      </div>
-    </div>
-    <div class="container lightbg" id="pupcakes">
-      <div class="row">
-        <div class="col-md-12">
-          <h3>ABOUT OUR PUP CAKES</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer condimentum ullamcorper arcu id accumsan. Maecenas
-            interdum, neque sed vehicula molestie, nunc neque pellentesque tortor, blandit iaculis ipsum sem ut orci. Curabitur
-            laoreet finibus leo, vel porta dolor dapibus a. Sed nec tortor eleifend, ultrices leo ac, venenatis nibh. Morbi
-            faucibus odio at tellus cursus, vel facilisis dui consectetur. Nullam ornare gravida ex, a pulvinar lacus mattis
-            vel. Aliquam laoreet vitae augue vitae posuere. Aliquam erat volutpat. Vivamus vel turpis mauris. Nunc sem urna,
-            consequat in placerat ut, posuere ut enim. Aliquam mauris nibh, laoreet vitae venenatis vel, imperdiet vel tellus.
-            Nam magna tellus, ultricies eu feugiat ut, egestas commodo lacus. Curabitur pulvinar id justo vestibulum rutrum.
-            Sed eu mauris non nisl cursus pellentesque sed eget orci.</p>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row min-height-width">
-        <div class="col-xs-12 separator">
-
-        </div>
-      </div>
-    </div>
-    <div class="container nobg" id="ddlp">
-      <div class="row">
-        <div class="col-md-12">
-          <h3>ABOUT DR DOO'S LITTLE PUPCAKERY</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer condimentum ullamcorper arcu id accumsan. Maecenas
-            interdum, neque sed vehicula molestie, nunc neque pellentesque tortor, blandit iaculis ipsum sem ut orci. Curabitur
-            laoreet finibus leo, vel porta dolor dapibus a. Sed nec tortor eleifend, ultrices leo ac, venenatis nibh. Morbi
-            faucibus odio at tellus cursus, vel facilisis dui consectetur. Nullam ornare gravida ex, a pulvinar lacus mattis
-            vel. Aliquam laoreet vitae augue vitae posuere. Aliquam erat volutpat. Vivamus vel turpis mauris. Nunc sem urna,
-            consequat in placerat ut, posuere ut enim. Aliquam mauris nibh, laoreet vitae venenatis vel, imperdiet vel tellus.
-            Nam magna tellus, ultricies eu feugiat ut, egestas commodo lacus. Curabitur pulvinar id justo vestibulum rutrum.
-            Sed eu mauris non nisl cursus pellentesque sed eget orci.</p>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row min-height-width">
-        <div class="col-xs-12 separator">
-
-        </div>
-      </div>
-    </div>
-    <div class="container lightbg" id="ddlp">
-      <div class="row">
-        <div class="col-md-12">
-          <h3>FREQUENTLY ASKED QUESTIONS</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer condimentum ullamcorper arcu id accumsan. Maecenas
-            interdum, neque sed vehicula molestie, nunc neque pellentesque tortor, blandit iaculis ipsum sem ut orci. Curabitur
-            laoreet finibus leo, vel porta dolor dapibus a. Sed nec tortor eleifend, ultrices leo ac, venenatis nibh. Morbi
-            faucibus odio at tellus cursus, vel facilisis dui consectetur. Nullam ornare gravida ex, a pulvinar lacus mattis
-            vel. Aliquam laoreet vitae augue vitae posuere. Aliquam erat volutpat. Vivamus vel turpis mauris. Nunc sem urna,
-            consequat in placerat ut, posuere ut enim. Aliquam mauris nibh, laoreet vitae venenatis vel, imperdiet vel tellus.
-            Nam magna tellus, ultricies eu feugiat ut, egestas commodo lacus. Curabitur pulvinar id justo vestibulum rutrum.
-            Sed eu mauris non nisl cursus pellentesque sed eget orci.</p>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row min-height-width">
-        <div class="col-xs-12 separator">
-
-        </div>
-      </div>
-    </div>
-    <div class="container nobg" id="contact">
-      <div class="row">
-        <div class="col-md-12">
-          <h3>CONTACT US</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer condimentum ullamcorper arcu id accumsan. Maecenas
-            interdum, neque sed vehicula molestie, nunc neque pellentesque tortor, blandit iaculis ipsum sem ut orci. Curabitur
-            laoreet finibus leo, vel porta dolor dapibus a. Sed nec tortor eleifend, ultrices leo ac, venenatis nibh. Morbi
-            faucibus odio at tellus cursus, vel facilisis dui consectetur. Nullam ornare gravida ex, a pulvinar lacus mattis
-            vel. Aliquam laoreet vitae augue vitae posuere. Aliquam erat volutpat. Vivamus vel turpis mauris. Nunc sem urna,
-            consequat in placerat ut, posuere ut enim. Aliquam mauris nibh, laoreet vitae venenatis vel, imperdiet vel tellus.
-            Nam magna tellus, ultricies eu feugiat ut, egestas commodo lacus. Curabitur pulvinar id justo vestibulum rutrum.
-            Sed eu mauris non nisl cursus pellentesque sed eget orci.</p>
-        </div>
-      </div>
-    </div>
+    {% endblock product %}
+    {% block about %}
+    {% endblock about %}
+    {% block faq %}
+    {% endblock faq %}
+    {% block contact %}
+    {% endblock contact %}
   </div>
   {% compress js %}
   <script type="text/javascript" src="{% static 'js/ddlp.js' %}"></script>

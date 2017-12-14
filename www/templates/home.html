@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load pages_tags mezzanine_tags i18n static product %}
+
+{% block about %}
+<div class="container">
+    <div class="row min-height-width">
+        <div class="col-xs-12 separator"></div>
+    </div>
+</div>
+<div class="container lightbg ddlp-content" id="about">
+    <img src="{% static 'images/heading-text-about.png' %}" class="img img-responsive center-block" />
+    {{ about_page.richtextpage.content|safe }}
+</div>
+{% endblock about %}
+
+{% block faq %}
+<div class="container">
+    <div class="row min-height-width">
+        <div class="col-xs-12 separator"></div>
+    </div>
+</div>
+<div class="container nobg ddlp-content" id="faq">
+    <img src="{% static 'images/heading-text-faqs.png' %}" class="img img-responsive center-block" />
+    {{ faq_page.richtextpage.content|safe }}
+</div>
+{% endblock faq %}
+
+{% block contact %}
+<div class="container">
+    <div class="row min-height-width">
+        <div class="col-xs-12 separator"></div>
+    </div>
+</div>
+<div class="container lightbg ddlp-content" id="contact">
+    <img src="{% static 'images/heading-text-contactus.png' %}" class="img img-responsive center-block" />
+    <div class="row">
+        <div class="col-md-6">
+            {{ contactus_page.richtextpage.content|safe }}
+        </div>
+        <div class="col-md-6">
+            {{ feedbackform }}
+        </div>
+    </div>
+</div>
+{% endblock contact %}

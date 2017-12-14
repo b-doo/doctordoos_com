@@ -32,6 +32,10 @@
     text-align: right;
   }
 
+  form.checkout-form {
+    margin-bottom: 3em;
+  }
+
 }
 
 @media (min-width: 768px) {
@@ -178,4 +182,98 @@ div.container.container-wrapper {
 
 img#doo-head {
   max-height: 391px;
+}
+
+div.ddlp-content {
+  font-size: 1.4em;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+form.shop-form > div.form-group {
+  padding-right: 30px;
+}
+
+ul#product-images-large {
+  text-align: center;
+}
+
+h1.text-center {
+  margin-top: 0px;
+}
+
+div.form-actions > input.btn-primary {
+  background-image: linear-gradient(to bottom, #48b967 0, #235932 100%);
+  background-image: -webkit-linear-gradient(top, #48b967 0, #235932 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#48b967), to(#235932));
+  border-color: #235932;
+  background-color: #235932;
+  color: #fff;
+}
+
+div.form-actions > input.btn-primary:focus, div.form-actions > input.btn-primary:active {
+  background-color: #235923;
+}
+
+div.form-actions > a.btn-primary {
+  background-image: linear-gradient(to bottom, #48b967 0, #235932 100%);
+  background-image: -webkit-linear-gradient(top, #48b967 0, #235932 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#48b967), to(#235932));
+  border-color: #235932;
+  background-color: #235932;
+  color: #fff;
+}
+
+div.form-actions > a.btn-primary:focus, div.form-actions > a.btn-primary:active {
+  background-color: #235923;
+}
+
+
+div.form-actions > input.btn-default {
+  background-image: linear-gradient(to bottom, #b9489b 0, #8a3673 100%);
+  background-image: -webkit-linear-gradient(top, #b9489b 0, #8a3673 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#b9489b), to(#8a3673));
+  border-color: #b9489b;
+  background-color: #8a3673;
+  color: #fff;
+}
+
+div.form-actions > input.btn-default:active, div.form-actions > input.btn-default:focus {
+  background-color: #8a3673;
+}
+
+div.checkout-card_date {
+  max-width: 45%;
+  display: inline;
+}
+
+div.checkout-card_date > select.form-control {
+  width: unset;
+  display: inline;
+}
+
+div.checkout-panel > div > a.btn-default {
+  background-image: linear-gradient(to bottom, #ff9752 0, #8a522c 100%);
+  background-image: -webkit-linear-gradient(top, #ff9752 0, #8a522c 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff9752), to(#8a522c));
+  border-color: #ff9752;
+  background-color: #8a522c;
+  color: #fff;
+}
+
+div.checkout-panel > div > a.btn-default:active, div.checkout-panel > div > a.btn-default:focus {
+  background-color: #8a522c;
+}
+
+form.checkout-form > p > a.btn-primary {
+  background-image: linear-gradient(to bottom, #48b967 0, #235932 100%);
+  background-image: -webkit-linear-gradient(top, #48b967 0, #235932 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#48b967), to(#235932));
+  border-color: #235932;
+  background-color: #235932;
+  color: #fff;
+}
+
+form.checkout-form > p > a.btn-primary:active, form.checkout-form > p > a.btn-primary:focus {
+  background-color: #235923;
 }
