@@ -1,7 +1,7 @@
 from mezzanine.conf import settings
 from cartridge.shop.forms import OrderForm, AddProductForm
 from django import forms
-from www.models import DDLPFeedback
+from www.models import DDLPFeedback, FrequentlyAskedQuestion
 
 class DDLPOrderForm(OrderForm):
     """
@@ -119,3 +119,9 @@ class DDLPFeedbackForm(forms.ModelForm):
             'email': forms.TextInput(attrs={'class': 'form-control'}),
             'feedback': forms.Textarea(attrs={'class': 'form-control'})
         }
+
+
+class FAQForm(forms.ModelForm):
+    class Meta:
+        model = FrequentlyAskedQuestion
+        exclude = []

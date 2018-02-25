@@ -26,7 +26,7 @@
 <div class="col-md-9">
     <h1 class="text-center">{{ product.title }}</h1>
     <div class="well" style="font-size: 1.2em">{{ product.description}}</div>
-    <div class="form-group">
+    {% comment %}<div class="form-group">
         <div>
             <form method="post" id="add-cart" class="shop-form form-inline">
                 {% fields_for add_product_form %}
@@ -35,6 +35,9 @@
                 </div>
             </form>
         </div>
+    </div> {% endcomment %}
+    <div>
+        We're currently in the process of setting up online ordering! In the mean time, please contact us at <a href="mailto:sales@doctordoos.com?subject=PupCake Order">sales@doctordoos.com</a> to place an order.
     </div>
 </div>
 {% endfor %} {% else %}

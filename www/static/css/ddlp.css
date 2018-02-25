@@ -277,3 +277,17 @@ form.checkout-form > p > a.btn-primary {
 form.checkout-form > p > a.btn-primary:active, form.checkout-form > p > a.btn-primary:focus {
   background-color: #235923;
 }
+
+ul.faq-list-group {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+li.faq-list-group-item {
+  border: none;
+  background-color: unset;
+}
+
+div.faq-answer {
+  padding-left: 30px;
+}

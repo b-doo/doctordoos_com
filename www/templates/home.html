@@ -21,7 +21,12 @@
 </div>
 <div class="container nobg ddlp-content" id="faq">
     <img src="{% static 'images/heading-text-faqs.png' %}" class="img img-responsive center-block" />
-    {{ faq_page.richtextpage.content|safe }}
+    <ul class="list-group faq-list-group">
+    {% for faq in faqs %}
+        <li class="list-group-item faq-list-group-item"><a role="button" data-toggle="collapse" href="#faq-collapse-{{ faq.id }}" aria-expanded="false" aria-controls="faq-collapse-{{ faq.id }}">{{ faq.question }}</a></li>
+        <div class="collapse faq-answer" id="faq-collapse-{{ faq.id }}">{{ faq.answer|safe }}</div>
+    {% endfor %}
+    </ul>
 </div>
 {% endblock faq %}
 
@@ -38,7 +43,8 @@
             {{ contactus_page.richtextpage.content|safe }}
         </div>
         <div class="col-md-6">
-            {{ feedbackform }}
+            Please send all feedback to <a href="mailto:feedback@doctordoos.com?subject=PupCake Feedback">feedback@doctordoos.com</a>.
+            {% comment %}{{ feedbackform }}{% endcomment %}
         </div>
     </div>
 </div>
