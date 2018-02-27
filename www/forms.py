@@ -105,9 +105,12 @@ class DDLPAddProductForm(AddProductForm):
             self.fields['quantity'].widget.attrs['class'] = 'form-control'
             self.fields['quantity'].widget.attrs['maxlength'] = '3'
             self.fields['quantity'].widget.attrs['style'] = 'width: unset'
-        if not isinstance(self.fields['option1'].widget, forms.HiddenInput):
-            self.fields['option1'].widget.attrs['class'] = 'form-control'
-            self.fields['option1'].widget.attrs['style'] = 'width: unset'
+        try:
+            if not isinstance(self.fields['option1'].widget, forms.HiddenInput):
+                self.fields['option1'].widget.attrs['class'] = 'form-control'
+                self.fields['option1'].widget.attrs['style'] = 'width: unset'
+        except:
+            pass
 
 
 class DDLPFeedbackForm(forms.ModelForm):
